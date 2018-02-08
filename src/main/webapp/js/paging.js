@@ -24,7 +24,7 @@ layui.define(['layer', 'laypage', 'laytpl'], function (exports) {
             paged: true,//是否显示分页组件
             pageConfig: { //参数应该为object类型
                 elem: undefined,
-                pageSize: 15 //分页大小
+                pageSize: 3 //分页大小
             },
             success: undefined, //type:function
             fail: function (res) {
@@ -117,7 +117,7 @@ layui.define(['layer', 'laypage', 'laytpl'], function (exports) {
             success: function (result, status, xhr) {
                 if (loadIndex !== undefined)
                     layer.close(loadIndex); //关闭等待层
-                if (result.rel) {
+                if (result.code == 0) {
                     //获取模板
                     var tpl = _config.tempType === 0 ? $(_config.tempElem).html() : _config.tempElem;
                     //渲染数据
@@ -125,21 +125,23 @@ layui.define(['layer', 'laypage', 'laytpl'], function (exports) {
                         if (_config.renderBefore) {
                             _config.renderBefore(html, function (formatHtml) {
                                 $(_config.elem).html(formatHtml);
-                            }, result.list);
+                            }, result.data.list);
                         }
                         else {
                             $(_config.elem).html(html);
                         }
                     });
                     if (_config.paged) {
-                        if (result.count === null || result.count === undefined) {
+                        if (result.data.totalPage === null || result.data.totalPage === undefined) {
                             throwError('Paging Error:请返回数据总数！');
                             return;
                         }
                         var _pageConfig = _config.pageConfig;
-                        var pageSize = _pageConfig.pageSize;
-                        var pages = result.count % pageSize == 0 ?
-                            (result.count / pageSize) : (result.count / pageSize + 1);
+//                      var pageSize = _pageConfig.pageSize;
+						var pageSize = result.pageSize;
+//                      var pages = result.count % pageSize == 0 ?
+//                          (result.count / pageSize) : (result.count / pageSize + 1);
+						var pages = result.data.totalPage;
                         var defaults = {
                             cont: $(_pageConfig.elem),
                             curr: _config.params.pageIndex,
