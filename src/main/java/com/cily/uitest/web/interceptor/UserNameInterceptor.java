@@ -22,7 +22,7 @@ public class UserNameInterceptor implements Interceptor {
             //客户端ip
 
         }
-        String token = inv.getController().getHeader(Param.TOKEN);
+        String token = inv.getController().getHeader(SQLParam.TOKEN);
 
         if (StrUtils.isEmpty(userName)){
             inv.getController().renderJson(ResUtils.res(Param.C_USER_NAME_NULL,

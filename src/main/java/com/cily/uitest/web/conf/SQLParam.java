@@ -15,7 +15,10 @@ public interface SQLParam {
     String ID_CARD = "idCard";
     String STATUS = "status";
     String CREATE_TIME = "createTime";
+    String TOKEN = "token";
+    String UPDATE_TIME = "updateTime";
 
     String STATUS_ENABLE = "0";
     String STATUS_DISABLE = "1";
+
 }

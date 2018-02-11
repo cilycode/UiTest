@@ -25,7 +25,7 @@ public class SysUserController extends Controller {
     }
 
     public void getUsers(){
-        String token = getHeader(Param.TOKEN);
+        String token = getHeader(SQLParam.TOKEN);
         String deviceImei = getAttr(Param.DEVICE_IMEI);
 
         int pageNumber = getParaToInt(Param.PAGE_NUMBER, 1);

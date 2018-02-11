@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Param {
     public final static String DEVICE_IMEI = "deviceImei";
-    public final static String TOKEN = "token";
+
     public final static String PAGE_NUMBER = "pageNumber";
     public final static String PAGE_SIZE = "pageSize";
 
@@ -20,12 +20,9 @@ public class Param {
 
     public final static String C_SERVER_ERROR = "11";
 
-
-
+    public final static String C_USER_NOT_LOGIN = "1002";
     public final static String C_USER_NOT_EXIST = "1001";
-
     public final static String C_USER_OR_PWD_ERROR = "1006";
-
     public final static String C_USER_NAME_NULL = "1011";
 
 
@@ -54,7 +51,7 @@ public class Param {
         failureInfo.put(C_TOKEN_ERROR, "用户未登录或登录已失效");
         failureInfo.put(C_USER_INFO_UPDATE_FAILURE, "更新用户信息失败");
         failureInfo.put(C_USER_INFO_NO_UPDATE, "用户信息无更新");
-//        failureInfo.put(, );
+        failureInfo.put(C_USER_NOT_LOGIN, "该用户未登录");
 //        failureInfo.put(, );
 //        failureInfo.put(, );
 //        failureInfo.put(, );

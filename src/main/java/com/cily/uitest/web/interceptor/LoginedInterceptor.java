@@ -14,7 +14,7 @@ public class LoginedInterceptor implements Interceptor {
     @Override
     public void intercept(Invocation inv) {
         String userId = inv.getController().getHeader(SQLParam.USER_ID);
-        String token = inv.getController().getHeader(Param.TOKEN);
+        String token = inv.getController().getHeader(SQLParam.TOKEN);
         if (StrUtils.isEmpty(userId)){
             inv.getController().renderJson(ResUtils.res(Param.C_USER_ID_NULL, null, null));
             return;
