@@ -1,7 +1,5 @@
 package com.cily.uitest.web.interceptor;
 
-import com.cily.utils.base.log.Logs;
-import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 
 import java.util.Enumeration;
@@ -10,7 +8,7 @@ import java.util.logging.Logger;
 /**
  * Created by admin on 2018/2/6.
  */
-public class LogInterceptor implements Interceptor {
+public class LogInterceptor extends BaseInterceptor {
     @Override
     public void intercept(Invocation inv) {
         Enumeration<String> names = inv.getController().getParaNames();
