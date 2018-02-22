@@ -17,9 +17,11 @@ public class LogInterceptor implements Interceptor {
         while (names.hasMoreElements()){
             String name = names.nextElement();
             Logger.getLogger(this.getClass().getSimpleName()).info(
-                    "name = " + name + "<--->value = "
+                    "<--->name = " + name + "<--->value = "
                             + inv.getController().getPara(name));
         }
+        Logger.getLogger(this.getClass().getSimpleName()).info(
+                "requestUrl = " + inv.getController().getRequest().getRequestURI());
 
         inv.invoke();
     }

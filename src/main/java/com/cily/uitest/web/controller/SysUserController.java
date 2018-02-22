@@ -12,21 +12,21 @@ import com.jfinal.core.Controller;
 /**
  * Created by admin on 2018/2/5.
  */
-public class SysUserController extends Controller {
+public class SysUserController extends BaseController {
 
     public void addUser(){
-        UserUtils.regist(this, getHeader(SQLParam.USER_ID),
-                getPara(SQLParam.STATUS, SQLParam.STATUS_ENABLE));
+        UserUtils.regist(this, getUserId(),
+                getParam(SQLParam.STATUS, SQLParam.STATUS_ENABLE));
     }
 
     public void updateUserInfo(){
-        UserUtils.updateUserInfo(this, getPara(SQLParam.USER_ID, null),
-                getPara(SQLParam.STATUS, null));
+        UserUtils.updateUserInfo(this, getParam(SQLParam.USER_ID),
+                getParam(SQLParam.STATUS));
     }
 
     public void getUsers(){
-        String token = getHeader(SQLParam.TOKEN);
-        String deviceImei = getAttr(Param.DEVICE_IMEI);
+        String token = getToken();
+        String deviceImei = getDeviceImei();
 
         int pageNumber = getParaToInt(Param.PAGE_NUMBER, 1);
         int pageSize = getParaToInt(Param.PAGE_SIZE, 10);
@@ -34,7 +34,7 @@ public class SysUserController extends Controller {
 
 
         renderJson(ResUtils.success(TokenUtils.createToken(
-                getHeader(SQLParam.USER_ID), deviceImei, token),
-                UserModel.getUsersByStatus(getPara(SQLParam.STATUS, null), pageNumber, pageSize)));
+                getUserId(), deviceImei, token),
+                UserModel.getUsersByStatus(getParam(SQLParam.STATUS), pageNumber, pageSize)));
     }
 }

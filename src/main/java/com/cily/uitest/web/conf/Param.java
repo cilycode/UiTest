@@ -22,6 +22,7 @@ public class Param {
 
     public final static String C_USER_NOT_LOGIN = "1002";
     public final static String C_USER_NOT_EXIST = "1001";
+    public final static String C_USER_LOGIN_ON_OTHER = "1003";
     public final static String C_USER_OR_PWD_ERROR = "1006";
     public final static String C_USER_NAME_NULL = "1011";
 
@@ -37,6 +38,8 @@ public class Param {
     public final static String C_USER_INFO_UPDATE_FAILURE = "1121";
     public final static String C_USER_INFO_NO_UPDATE = "1122";
 
+    public final static String C_ROLE_NAME_NULL = "1131";
+
     private final static Map<String, String> failureInfo = new HashMap<>();
     static {
         failureInfo.put(C_SUCCESS, "操作成功");
@@ -51,9 +54,9 @@ public class Param {
         failureInfo.put(C_TOKEN_ERROR, "用户未登录或登录已失效");
         failureInfo.put(C_USER_INFO_UPDATE_FAILURE, "更新用户信息失败");
         failureInfo.put(C_USER_INFO_NO_UPDATE, "用户信息无更新");
-        failureInfo.put(C_USER_NOT_LOGIN, "该用户未登录");
-//        failureInfo.put(, );
-//        failureInfo.put(, );
+        failureInfo.put(C_USER_NOT_LOGIN, "该用户未登录或登录已失效");
+        failureInfo.put(C_USER_LOGIN_ON_OTHER, "该用户已在其他地方登录");
+        failureInfo.put(C_ROLE_NAME_NULL, "角色名称为空");
 //        failureInfo.put(, );
 //        failureInfo.put(, );
 //        failureInfo.put(, );

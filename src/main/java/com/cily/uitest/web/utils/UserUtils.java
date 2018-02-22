@@ -16,7 +16,7 @@ public class UserUtils {
             throw new NullPointerException("The Controller is null.");
         }
 
-        String token = c.getHeader(Param.TOKEN);
+        String token = c.getHeader(SQLParam.TOKEN);
         String deviceImei = c.getAttr(Param.DEVICE_IMEI);
 
         String userName = c.getPara(SQLParam.USER_NAME);
@@ -51,7 +51,7 @@ public class UserUtils {
         if(c == null){
             throw new NullPointerException("The Controller is null.");
         }
-        String token = c.getHeader(Param.TOKEN);
+        String token = c.getHeader(SQLParam.TOKEN);
         String deviceImei = c.getAttr(Param.DEVICE_IMEI);
 
         String pwd = c.getPara(SQLParam.PWD);

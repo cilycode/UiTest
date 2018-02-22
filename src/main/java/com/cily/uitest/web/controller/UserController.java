@@ -14,13 +14,13 @@ import com.jfinal.core.Controller;
  * Created by admin on 2018/1/30.
  */
 
-public class UserController extends Controller {
+public class UserController extends BaseController {
     @Clear({LoginedInterceptor.class})
     public void login(){
-        String userName = getPara(SQLParam.USER_NAME);
-        String pwd = getPara(SQLParam.PWD);
+        String userName = getParam(SQLParam.USER_NAME);
+        String pwd = getParam(SQLParam.PWD);
 
-        String deviceImei = getAttr(Param.DEVICE_IMEI);
+        String deviceImei = getDeviceImei();
 
         UserModel um = UserModel.getUserByUserName(userName);
         if (um == null){
@@ -44,6 +44,6 @@ public class UserController extends Controller {
     }
 
     public void updateUserInfo(){
-        UserUtils.updateUserInfo(this, getHeader(SQLParam.USER_ID), null);
+        UserUtils.updateUserInfo(this, getUserId(), null);
     }
 }
