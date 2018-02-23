@@ -2,6 +2,7 @@ package com.cily.uitest.web.interceptor;
 
 import com.cily.uitest.web.conf.Param;
 import com.cily.uitest.web.conf.SQLParam;
+import com.cily.uitest.web.utils.TokenUtils;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 
@@ -39,6 +40,10 @@ public abstract class BaseInterceptor implements Interceptor {
             return null;
         }
         return inv.getController().getHeader(key);
+    }
+
+    protected String createTokenByOs(Invocation inv){
+        return TokenUtils.createToken(getUserId(inv), getDeviceImei(inv), getToken(inv));
     }
 
 }

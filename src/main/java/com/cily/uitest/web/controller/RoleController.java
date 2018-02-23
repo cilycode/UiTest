@@ -2,10 +2,9 @@ package com.cily.uitest.web.controller;
 
 import com.cily.uitest.web.conf.Param;
 import com.cily.uitest.web.conf.SQLParam;
+import com.cily.uitest.web.model.RoleModel;
 import com.cily.uitest.web.utils.ResUtils;
-import com.cily.uitest.web.utils.TokenUtils;
 import com.cily.utils.base.StrUtils;
-import com.jfinal.core.Controller;
 
 /**
  * Created by admin on 2018/2/22.
@@ -14,12 +13,42 @@ public class RoleController extends BaseController {
 
     public void addRole(){
         String roleName = getParam(SQLParam.ROLE_NAME);
-        String des = getParam(SQLParam.DES);
         if (StrUtils.isEmpty(roleName)){
             renderJson(ResUtils.res(Param.C_ROLE_NAME_NULL,
-                    TokenUtils.createToken(getUserId(),
-                            getDeviceImei(), getToken()), null));
+                    createTokenByOs(), null));
             return;
         }
+        if (RoleModel.roleNameIsExist(roleName)){
+            renderJson(ResUtils.res(Param.C_ROLE_NAME_EXISTS,
+                    createTokenByOs(),
+                    null));
+            return;
+        }
+        if (RoleModel.insert(roleName)){
+            renderJson(ResUtils.success(
+                    createTokenByOs(),null));
+            return;
+        }else {
+            renderJson(ResUtils.res(Param.C_ROLE_ADD_FAILED,
+                    createTokenByOs(), null));
+            return;
+        }
+    }
+
+    public void delRole(){
+        String roleId = getParam(SQLParam.ROLE_ID);
+        if (RoleModel.del(roleId)){
+            renderJson(ResUtils.success(
+                    createTokenByOs(), null));
+            return;
+        }else {
+            renderJson(ResUtils.res(Param.C_ROLE_DEL_FAILED,
+                    createTokenByOs(), null));
+            return;
+        }
+    }
+
+    public void getRoles(){
+        renderJson(ResUtils.success(createTokenByOs(), RoleModel.getRoles()));
     }
 }

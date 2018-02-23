@@ -31,8 +31,6 @@ public interface SQLParam {
     String ACCESS_URL = "accessUrl";
 
 
-    String DES = "des";
-
 
     String STATUS_ENABLE = "0";
     String STATUS_DISABLE = "1";

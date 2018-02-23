@@ -19,7 +19,7 @@ public class LogInterceptor extends BaseInterceptor {
                             + inv.getController().getPara(name));
         }
         Logger.getLogger(this.getClass().getSimpleName()).info(
-                "requestUrl = " + inv.getController().getRequest().getRequestURI());
+                "requestUrl = " + inv.getActionKey());
 
         inv.invoke();
     }

@@ -1,5 +1,6 @@
 package com.cily.uitest.web.utils;
 
+import com.cily.uitest.web.controller.BaseController;
 import com.cily.utils.base.StrUtils;
 import com.cily.utils.base.UUIDUtils;
 import com.jfinal.kit.PropKit;

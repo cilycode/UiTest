@@ -13,7 +13,7 @@ public class RightModel extends Model<RightModel> {
     private static RightModel dao = new RightModel();
 
     public static boolean insert(String rightName, String accessUrl,
-            String status, String des){
+            String status){
         if (StrUtils.isEmpty(rightName) || StrUtils.isEmpty(accessUrl)){
             return false;
         }
@@ -21,9 +21,7 @@ public class RightModel extends Model<RightModel> {
         m.set(SQLParam.RIGHT_ID, UUIDUtils.getUUID());
         m.set(SQLParam.RIGHT_NAME, rightName);
         m.set(SQLParam.ACCESS_URL, accessUrl);
-        if (!StrUtils.isEmpty(des)){
-            m.set(SQLParam.DES, des);
-        }
+
         if (StrUtils.isEmpty(status)){
             m.set(SQLParam.STATUS, SQLParam.STATUS_ENABLE);
         }else {
@@ -47,6 +45,13 @@ public class RightModel extends Model<RightModel> {
                 SQLParam.RIGHT_NAME, " = '", rightName, "';")) != null;
     }
 
+    public static boolean rightIsExist(String rightId){
+        if (StrUtils.isEmpty(rightId)){
+            return false;
+        }
+        return dao.findById(rightId) != null;
+    }
+
     public static boolean accessUrlIsExist(String accessUrl){
         if (StrUtils.isEmpty(accessUrl)){
             return true;
@@ -58,8 +63,7 @@ public class RightModel extends Model<RightModel> {
 
 
     public static boolean update(String rightId, String rightName,
-                                 String accessUrl, String status,
-                                 String des){
+                                 String accessUrl, String status){
         if (StrUtils.isEmpty(rightId)){
             return false;
         }

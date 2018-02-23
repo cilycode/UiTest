@@ -7,7 +7,11 @@ import com.cily.uitest.web.controller.UserController;
 import com.cily.uitest.web.interceptor.DeviceImeiInterceptor;
 import com.cily.uitest.web.interceptor.LogInterceptor;
 import com.cily.uitest.web.interceptor.LoginedInterceptor;
+import com.cily.uitest.web.interceptor.RightInterceptor;
+import com.cily.uitest.web.model.RightModel;
+import com.cily.uitest.web.model.RightRoleModel;
 import com.cily.uitest.web.model.UserModel;
+import com.cily.utils.base.StrUtils;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -44,6 +48,11 @@ public class Conf extends JFinalConfig {
         arp.setShowSql(PropKit.getBoolean("showSql"));
         me.add(arp);
         arp.addMapping(SQLParam.T_USER, SQLParam.USER_ID, UserModel.class);
+
+        arp.addMapping(SQLParam.T_RIGHT, SQLParam.RIGHT_ID, RightModel.class);
+        arp.addMapping(SQLParam.T_RIGHT_ROLE,
+                StrUtils.join(SQLParam.RIGHT_ID, ",",
+                        SQLParam.ROLE_ID), RightRoleModel.class);
     }
 
     @Override
@@ -51,6 +60,7 @@ public class Conf extends JFinalConfig {
         me.add(new LogInterceptor());
         me.add(new DeviceImeiInterceptor());
 //        me.add(new LoginedInterceptor());
+        me.add(new RightInterceptor());
     }
 
     @Override

@@ -5,6 +5,8 @@ import com.cily.utils.base.StrUtils;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Model;
 
+import java.util.List;
+
 /**
  * Created by admin on 2018/2/22.
  */
@@ -51,5 +53,33 @@ public class UserRoleModel extends Model<UserRoleModel> {
                 SQLParam.ROLE_ID, " = '", roleId, "' and ",
                 SQLParam.USER_ID, "= '", userId, "';")) > 0;
 
+    }
+
+    public static List<UserRoleModel> getUserRolesByUserId(String userId){
+        if (StrUtils.isEmpty(userId)){
+            return null;
+        }
+        return dao.find(StrUtils.join(
+                "select * from ", SQLParam.T_USER_ROLE,
+                " left join ", SQLParam.T_ROLE, " on ",
+                SQLParam.T_USER_ROLE, ".", SQLParam.ROLE_ID, " = ",
+                SQLParam.T_ROLE, ".", SQLParam.ROLE_ID,
+                " where ", SQLParam.T_USER_ROLE, ".", SQLParam.USER_ID, " = '", userId, "';"
+        ));
+    }
+
+    public static boolean isAccessToUrl(String userId, String accessUrl){
+        if (StrUtils.isEmpty(userId) || StrUtils.isEmpty(accessUrl)){
+            return false;
+        }
+        return dao.findFirst(StrUtils.join(
+                "select * from ", SQLParam.T_USER_ROLE,
+                " left join ", SQLParam.T_RIGHT_ROLE ,
+                " on ", SQLParam.T_USER_ROLE, ".", SQLParam.ROLE_ID, " = ", SQLParam.T_RIGHT_ROLE, ".", SQLParam.ROLE_ID,
+                " left join ", SQLParam.T_RIGHT,
+                " on ", SQLParam.T_RIGHT_ROLE, ".", SQLParam.RIGHT_ID, " = ", SQLParam.T_RIGHT, ".", SQLParam.RIGHT_ID,
+                " where ", SQLParam.T_USER_ROLE, ".", SQLParam.USER_ID, " = '", userId, "' and ",
+                SQLParam.T_RIGHT, ".", SQLParam.ACCESS_URL, "'", accessUrl, "';"
+        )) != null;
     }
 }

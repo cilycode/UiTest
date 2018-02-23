@@ -33,8 +33,7 @@ public class SysUserController extends BaseController {
 
 
 
-        renderJson(ResUtils.success(TokenUtils.createToken(
-                getUserId(), deviceImei, token),
+        renderJson(ResUtils.success(createTokenByOs(),
                 UserModel.getUsersByStatus(getParam(SQLParam.STATUS), pageNumber, pageSize)));
     }
 }

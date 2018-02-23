@@ -2,6 +2,7 @@ package com.cily.uitest.web.controller;
 
 import com.cily.uitest.web.conf.Param;
 import com.cily.uitest.web.conf.SQLParam;
+import com.cily.uitest.web.utils.TokenUtils;
 import com.jfinal.core.Controller;
 
 /**
@@ -26,6 +27,10 @@ public class BaseController extends Controller {
 
     protected String getUserId(){
         return getHeader(SQLParam.USER_ID);
+    }
+
+    protected String createTokenByOs(){
+        return TokenUtils.createToken(getUserId(), getDeviceImei(), getToken());
     }
 
 }

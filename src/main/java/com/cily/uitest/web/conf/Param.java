@@ -38,7 +38,27 @@ public class Param {
     public final static String C_USER_INFO_UPDATE_FAILURE = "1121";
     public final static String C_USER_INFO_NO_UPDATE = "1122";
 
-    public final static String C_ROLE_NAME_NULL = "1131";
+    public final static String C_ROLE_NAME_NULL = "1201";
+    public final static String C_ROLE_NAME_EXISTS = "1202";
+    public final static String C_ROLE_ID_NULL = "1203";
+    public final static String C_ROLE_NOT_EXIST = "1204";
+
+    public final static String C_ROLE_ADD_FAILED = "1206";
+    public final static String C_ROLE_DEL_FAILED = "1211";
+
+    public final static String C_USER_ROLE_DEL_FAILED = "1216";
+    public final static String C_USER_ROLE_ADD_FAILED = "1217";
+
+    public final static String C_RIGHT_LOW = "1251";
+    public final static String C_RIGHT_ID_NULL = "1252";
+    public final static String C_RIGHT_NOT_EXIST = "1253";
+    public final static String C_RIGHT_STATUS_CHANGE_FAILED = "1254";
+
+    public final static String C_RIGHT_ROLE_ADD_FAILED = "1261";
+    public final static String C_RIGHT_ROLE_DEL_FAILED = "1262";
+//    public final static String C_
+//    public final static String C_
+//    public final static String C_
 
     private final static Map<String, String> failureInfo = new HashMap<>();
     static {
@@ -57,6 +77,48 @@ public class Param {
         failureInfo.put(C_USER_NOT_LOGIN, "该用户未登录或登录已失效");
         failureInfo.put(C_USER_LOGIN_ON_OTHER, "该用户已在其他地方登录");
         failureInfo.put(C_ROLE_NAME_NULL, "角色名称为空");
+        failureInfo.put(C_RIGHT_LOW, "权限不足");
+        failureInfo.put(C_ROLE_NAME_EXISTS, "角色名称已存在");
+        failureInfo.put(C_ROLE_ADD_FAILED, "添加角色失败");
+        failureInfo.put(C_ROLE_DEL_FAILED, "删除角色失败");
+        failureInfo.put(C_USER_ROLE_DEL_FAILED, "删除用户角色失败");
+        failureInfo.put(C_USER_ROLE_ADD_FAILED, "添加用户角色失败");
+        failureInfo.put(C_ROLE_ID_NULL, "角色id为空");
+        failureInfo.put(C_ROLE_NOT_EXIST, "该角色不存在");
+        failureInfo.put(C_RIGHT_ID_NULL, "权限id为空");
+        failureInfo.put(C_RIGHT_NOT_EXIST, "权限不存在");
+        failureInfo.put(C_RIGHT_STATUS_CHANGE_FAILED, "修改权限状态失败");
+        failureInfo.put(C_RIGHT_ROLE_ADD_FAILED, "添加角色权限失败");
+        failureInfo.put(C_RIGHT_ROLE_DEL_FAILED, "删除角色权限失败");
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
+//        failureInfo.put(, );
 //        failureInfo.put(, );
 //        failureInfo.put(, );
 //        failureInfo.put(, );
