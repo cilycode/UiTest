@@ -53,6 +53,7 @@ public class Param {
     public final static String C_RIGHT_ID_NULL = "1252";
     public final static String C_RIGHT_NOT_EXIST = "1253";
     public final static String C_RIGHT_STATUS_CHANGE_FAILED = "1254";
+    public final static String C_RIGHT_REFUSE = "1255";
 
     public final static String C_RIGHT_ROLE_ADD_FAILED = "1261";
     public final static String C_RIGHT_ROLE_DEL_FAILED = "1262";
@@ -90,7 +91,7 @@ public class Param {
         failureInfo.put(C_RIGHT_STATUS_CHANGE_FAILED, "修改权限状态失败");
         failureInfo.put(C_RIGHT_ROLE_ADD_FAILED, "添加角色权限失败");
         failureInfo.put(C_RIGHT_ROLE_DEL_FAILED, "删除角色权限失败");
-//        failureInfo.put(, );
+        failureInfo.put(C_RIGHT_REFUSE, "权限被禁用");
 //        failureInfo.put(, );
 //        failureInfo.put(, );
 //        failureInfo.put(, );

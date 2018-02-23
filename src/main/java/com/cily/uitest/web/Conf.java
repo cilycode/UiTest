@@ -60,7 +60,7 @@ public class Conf extends JFinalConfig {
         me.add(new LogInterceptor());
         me.add(new DeviceImeiInterceptor());
 //        me.add(new LoginedInterceptor());
-        me.add(new RightInterceptor());
+//        me.add(new RightInterceptor());
     }
 
     @Override
